@@ -6,7 +6,7 @@
 
 | クレート名        | 対応状況 |
 | ----------------- | -------- |
-| lexer: `pest`     | 対応済み |
+| lexer: `plex`     | 対応済み |
 | lexer: `logos`    | 未対応   |
 | parser: `lalrpop` | 対応済み |
 | parser: `peg`     | 対応遅れ |
