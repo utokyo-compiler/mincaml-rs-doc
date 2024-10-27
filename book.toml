@@ -1,6 +1,26 @@
 [book]
 authors = ["sylide"]
-language = "en"
-multilingual = false
+language = "ja"
 src = "src"
 title = "mincaml-rs documentation"
+
+[build]
+extra-watch-dirs = ["po"]
+
+[preprocessor.gettext]
+after = ["links"]
+
+[output.xgettext]
+optional = true
+pot-file = "messages.pot"
+granularity = 0
+
+[output.pandoc]
+optional = true
+disabled = true
+
+[output.pandoc.profile.pdf]
+output-file = "mincaml-rs-doc.pdf"
+pdf-engine = "typst"
+
+[output.html]
