@@ -1,0 +1,5 @@
+# コード生成
+
+mincaml-rsはWebAssemblyへの出力にのみ対応しています．仮想アセンブリを経由せず，クロージャ変換後の式からコード生成を行います．これはWebAssemblyが構造化されたプログラムしか扱わないためです．relooper等で検索してください．
+
+`codegen_wasm`は`wasm_encoder`を直接用いるために多少のプログラミングをしていますが，WebAssemblyへのコード生成は単純です．

@@ -2,7 +2,7 @@
 authors = ["sylide"]
 language = "ja"
 src = "src"
-title = "mincaml-rs documentation"
+title = "mincaml-rs Documentation"
 
 [build]
 extra-watch-dirs = ["po"]
