@@ -1,0 +1,3 @@
+The OCaml logo is taken from https://github.com/ocaml/ocaml-logo/blob/master/Colour/SVG/colour-icon.svg under https://github.com/ocaml/ocaml-logo/blob/master/UNLICENSE.md .
+The Rust logo is taken from https://foundation.rust-lang.org/policies/logo-policy-and-media-guide/ under https://creativecommons.org/licenses/by/4.0/ .
+I (@s-ylide) modified these two logos as svg.
