@@ -1,0 +1,61 @@
+name: Deploy
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      MDBOOK_VERSION: 0.4.40
+      MDBOOK_LINKCHECK_VERSION: 0.7.7
+      MDBOOK_TOC_VERSION: 0.14.2
+      MDBOOK_I18N_VERSION: 0.3.3
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # linkcheck needs the base commit.
+          fetch-depth: 0
+
+      - name: Install latest stable Rust toolchain
+        run: |
+          rustup update stable
+
+      - name: Setup Rust cache
+        uses: Swatinem/rust-cache@v2
+        with:
+          save-if: ${{ github.ref == 'refs/heads/main' }}
+
+      - name: Install Carbo binstall
+        uses: cargo-bins/cargo-binstall@main
+
+      - name: Install Dependencies
+        run: |
+          cargo binstall mdbook --no-confirm --version ${{ env.MDBOOK_VERSION }}
+          cargo binstall mdbook-linkcheck --no-confirm --version ${{ env.MDBOOK_LINKCHECK_VERSION }}
+          cargo binstall mdbook-toc --no-confirm --version ${{ env.MDBOOK_TOC_VERSION }}
+          cargo binstall mdbook-i18n-helpers --no-confirm --version ${{ env.MDBOOK_I18N_VERSION }}
+
+      - name: Check build
+        run: mdbook build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: book/html
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
