@@ -27,3 +27,7 @@ output-file = "mincaml-rs-doc.pdf"
 pdf-engine = "typst"
 
 [output.html]
+
+[output.linkcheck]
+optional = true
+follow-web-links = false
