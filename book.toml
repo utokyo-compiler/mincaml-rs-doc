@@ -15,6 +15,9 @@ optional = true
 pot-file = "messages.pot"
 granularity = 0
 
+[preprocessor.toc]
+renderer = ["html"]
+
 [output.pandoc]
 optional = true
 disabled = true
