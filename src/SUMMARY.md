@@ -14,6 +14,7 @@
 
 # コンパイラを改造する
 
+- [ライブラリ関数](./lib_interface.md)
 - [レジスタ割り当て](./regalloc.md)
 - [最適化の余地](./optimization.md)
   - [グローバル変数の導入](./optimization/global_variable.md)
